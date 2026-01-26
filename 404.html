@@ -5,16 +5,25 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
       // Ambil path yang diminta user
-      const path = window.location.pathname.replace("/indikator-kpi", "");
+      const fullPath = window.location.pathname;
 
-      // Cek localStorage userData
+      // Pastikan kita hanya ambil bagian setelah /indikator-kpi
+      const basePath = "/indikator-kpi";
+      let path = fullPath.startsWith(basePath) ? fullPath.slice(basePath.length) : "/";
+
+      // Tambahkan leading slash kalau hilang
+      if (!path.startsWith("/")) path = "/" + path;
+
+      // Cek localStorage
       const user = localStorage.getItem("userData");
 
-      // Redirect
+      // Redirect aman
       if (user) {
-        window.location.replace("/indikator-kpi" + path); // ke route asli
+        // Sudah login → ke route React
+        window.location.replace(basePath + path);
       } else {
-        window.location.replace("/indikator-kpi/"); // ke login
+        // Belum login → ke login page
+        window.location.replace(basePath + "/");
       }
     </script>
   </head>
