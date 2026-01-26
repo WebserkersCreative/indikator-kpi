@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Ambil path asli dari URL
       const path = window.location.pathname;
+      const base = "/indikator-kpi";
 
-      // Pastikan user tidak mengalami loop
-      const redirectTo = "/indikator-kpi/index.html" + path;
-
-      window.location.replace(redirectTo);
+      // Jangan redirect jika sudah di index.html
+      if (!path.includes("/index.html")) {
+        window.location.replace(base + "/index.html" + path.replace(base, ""));
+      }
+      // Kalau sudah index.html, biarkan React Router yang menangani
     </script>
   </head>
   <body>
