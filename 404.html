@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // Ambil path yang diminta user
+      const path = window.location.pathname;
+
+      // Cek localStorage userData
+      const user = localStorage.getItem("userData");
+
+      // Jika user sudah login, redirect ke path asli
+      // Jika belum login, redirect ke login page (/indikator-kpi/)
+      if (user) {
+        window.location.replace("/indikator-kpi/index.html" + path);
+      } else {
+        window.location.replace("/indikator-kpi/index.html");
+      }
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
