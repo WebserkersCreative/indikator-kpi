@@ -4,25 +4,14 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Ambil path yang diminta user
-      const fullPath = window.location.pathname;
-
-      // Pastikan kita hanya ambil bagian setelah /indikator-kpi
       const basePath = "/indikator-kpi";
-      let path = fullPath.startsWith(basePath) ? fullPath.slice(basePath.length) : "/";
-
-      // Tambahkan leading slash kalau hilang
-      if (!path.startsWith("/")) path = "/" + path;
-
-      // Cek localStorage
       const user = localStorage.getItem("userData");
 
-      // Redirect aman
       if (user) {
-        // Sudah login → ke route React
-        window.location.replace(basePath + path);
+        // Sudah login → redirect ke homepage React
+        window.location.replace(basePath + "/homepage");
       } else {
-        // Belum login → ke login page
+        // Belum login → redirect ke login page
         window.location.replace(basePath + "/");
       }
     </script>
