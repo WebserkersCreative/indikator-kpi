@@ -4,14 +4,20 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
+      // Ambil path yang diminta user
       const path = window.location.pathname;
       const base = "/indikator-kpi";
 
-      // Jangan redirect jika sudah di index.html
-      if (!path.includes("/index.html")) {
-        window.location.replace(base + "/index.html" + path.replace(base, ""));
+      // Cek localStorage userData
+      const user = localStorage.getItem("userData");
+
+      // Jika path sudah mengarah ke index.html, jangan redirect lagi
+      if (path.endsWith("index.html") || path.endsWith(base + "/")) {
+        // biarkan React yang menangani
+      } else {
+        // Redirect ke index.html tanpa menambahkan path lain
+        window.location.replace(base + "/index.html" + window.location.search + window.location.hash);
       }
-      // Kalau sudah index.html, biarkan React Router yang menangani
     </script>
   </head>
   <body>
