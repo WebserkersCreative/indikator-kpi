@@ -7,21 +7,18 @@
       // Single Page Apps for GitHub Pages
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
-      // Script ini menangkap error 404 dan melempar balik ke index.html
-      // dengan membawa URL tujuan dalam query parameter.
-
-      // ====================================================================
-      // KONFIGURASI PENTING:
-      // Karena di App.js kamu menggunakan basename="/indikator-kpi",
-      // maka pathSegmentsToKeep HARUS diset ke 1.
-      // Ini menjaga agar bagian "/indikator-kpi" tidak hilang saat redirect.
-      // ====================================================================
+      
+      // ==========================================
+      // KONFIGURASI:
+      // pathSegmentsToKeep = 1 
+      // (Wajib 1 karena basename kamu adalah "/indikator-kpi")
+      // ==========================================
       var pathSegmentsToKeep = 1;
 
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?p=/' +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
         l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
         (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
